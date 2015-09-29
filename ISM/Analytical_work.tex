@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+\usepackage[hmargin=2.0cm,vmargin=1cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{amsmath}
+
+\title{\begin{LARGE}
+{HW2 ISM, Radiative transfer and processes}
+\end{LARGE}}
+
+\author{Juan Nicol\'as Garavito Camargo}
+
+\begin{document}
+\maketitle
+
+
+\begin{LARGE}
+\textbf{1.}
+\end{LARGE}
+
+If the source function can be approximated as: 
+
+\begin{equation}\label{approx}
+S(\tau) \approx S(\tau_{*}) + S'(\tau_*)(\tau - \tau_*) + \dfrac{1}{2}S''(\tau_*)(\tau-\tau_*)^2	
+\end{equation}
+
+Then the full general solution for the radiative transfer can be writen as:
+
+\begin{equation}\label{sol}
+I_{\nu}(\tau_1, \mu) = I_{\nu}(\tau_2, \mu) e^{-(\tau_2 - \tau_1)/\mu} + \dfrac{1}{\mu}\int_{\tau_1}^{\tau_2}S_{\nu}(\tau ')e^{-(\tau ' - \tau_1)/\mu} d\tau '
+\end{equation}
+
+\begin{equation}
+I_{\nu}(\tau_1, \mu) = I_{\nu}(\tau_2, \mu) e^{-(\tau_2 - \tau_1)/\mu} + 
+\dfrac{1}{\mu} \int_{\tau_1}^{\tau_2} e^{-(\tau ' - \tau_1)/\mu} d\tau ' 
+\left[  S(\tau_{*}) + S'(\tau_*)(\tau ' - \tau_*) + \dfrac{1}{2}S''(\tau_*)(\tau '-\tau_*)^2 \right] d\tau '
+\end{equation}
+
+Now I treat the 3 integrals separately:\\
+
+The first integral involving the term $S(\tau_*)$ is:
+
+\begin{equation}\label{int1}
+\int_{\tau_1}^{\tau_2}e^{-(\tau ' - \tau_1)/\mu} S(\tau_*) d\tau ' =
+S(\tau_*)\int_{\tau_1}^{\tau_2}e^{-(\tau' - \tau_1)/\mu} d\tau ' = S(\tau_*) (-\mu) \left[ e^{-(\tau_2 - \tau_1)/\mu} - 1 \right]
+\end{equation}
+
+The second integral corresponding to the $S'(\tau_*)$ term:
+
+\begin{equation*}
+\int_{\tau_1}^{\tau_2}e^{-(\tau ' - \tau_1)/\mu} S'(\tau_*)(\tau ' - \tau_*) d\tau ' = S'(\tau_*) \int_{\tau_1}^{\tau_2}e^{-(\tau ' - \tau_1)/\mu} (\tau ' - \tau_*)
+d\tau ' = -\mu S'(\tau_*)(\mu - \tau_* + \tau')e^{-(\tau ' - \tau_1)/\mu}
+\end{equation*}
+
+\begin{equation}\label{int2}
+= -\mu S'(\tau_*)\left[ (\mu - \tau_* + \tau_2)e^{-(\tau_2 - \tau_1)/\mu} - (\mu - \tau_* + \tau_1) \right]
+\end{equation}
+
+
+Finally the third integral correspoding to the $S''(\tau_*)$ term is:
+
+\begin{equation*}
+\dfrac{1}{2}\int_{\tau_1}^{\tau_2}e^{-(\tau ' - \tau_1)/\mu} S''(\tau_*)(\tau ' - \tau_*)^2 d\tau' = \dfrac{S''(\tau_*)}{2} \int_{\tau_1}^{\tau_2}e^{-(\tau ' - \tau_1)/\mu} (\tau ' - \tau_*)^2 d\tau'  
+\end{equation*}
+
+\begin{equation*}
+ =  \dfrac{S''(\tau_*)}{2} \left[-\mu (\tau_{*}^2 - 2\tau_*(\mu+\tau') + 2\mu^2 + 2\mu \tau' + \tau'^2)e^{-(\tau'-\tau_1)/{\mu}} \right]
+\end{equation*}
+
+\begin{equation}\label{int3}
+= \dfrac{-\mu S''(\tau_*)}{2} \left[ (\tau_{*}^2 - 2\tau_*(\mu+\tau_2) + 2\mu^2 + 2\mu \tau_2 + \tau_{2}^2)e^{-(\tau_2 -\tau_1)/{\mu}} - (\tau_{*}^2 - 2\tau_*(\mu+\tau_1) + 2\mu^2 + 2\mu \tau_1+ \tau_{1}^2) \right]
+\end{equation}
+
+If $\tau_* = \mu$ and $\tau_1 = 0$ the terms that would be affected are Eq.\ref{int2} \& Eq.\ref{int3}
+correspondly.
+
+\begin{equation}
+ = -\mu S'(\tau_*)\left[ \tau_2 e^{-(\tau_2-\tau_1)/\mu} - \tau_1\right] = -\mu S'(\tau_*) \tau_2 e^{-\tau_2/\mu} \approx 0
+\end{equation}
+
+\begin{equation}
+= \dfrac{-\mu S''(\tau_*)}{2} \left[ (\mu^2 + \tau_{2}^2)e^{-(\tau_2 -\tau_1)/{\mu}} - (\mu^2 + \tau_{1}^2) \right] = \dfrac{-\mu S''(\tau_*)}{2} ( -\mu^2 ) = \dfrac{\mu^3 S''(\tau_*)}{2}
+\end{equation}
+
+
+\begin{LARGE}
+\textbf{2.}
+\end{LARGE}
+
+
+\begin{equation}
+I_{\nu} = I_{\nu}(0)e^{-\tau_{\nu}} + B_{\nu}(T)\left[ 1 - e^{-\tau_{\nu}} \right]
+\end{equation}
+
+When the source is observed trough the nebula:
+
+\begin{equation}
+I_{\nu} = I_{\nu}(T_s)e^{-\tau_{\nu}} + I_{\nu}(T_n)\left[ 1 - e^{-\tau_{\nu}} \right]
+\end{equation}
+
+\begin{equation}
+I_{\nu} = I_{\nu}(T_s)
+\end{equation}
+
+\begin{equation}
+I_{\nu}(T_s) = I_{\nu}(T_s)e^{-\tau_{\nu}} + I_{\nu}(T_n)\left[ 1 - e^{-\tau_{\nu}} \right]
+\end{equation}
+
+\begin{equation}
+e^{-\tau_{\nu}}(I_{\nu}(T_s) - I_{\nu}(T_n)) = I_{\nu}(T_s) - I_{\nu}(T_n)
+\end{equation}
+
+\begin{equation}
+1 - e^{-\tau_{\nu}} = I_{\nu}(T_s) - I_{\nu}(T_n)
+\end{equation}
+
+
+\end{document}
