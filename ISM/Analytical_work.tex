@@ -121,6 +121,7 @@ I_{\nu, 1} - I_{\nu, 2} = I_{\nu}(T_s)e^{-\tau_{\nu}}
 \end{LARGE}
 
 \begin{figure}[H]
+\centering
 \includegraphics[scale=0.5]{mbv.png}
 \caption{Velocity distribution for $10^{38}$Hydrogen atoms 
 in the solar photosphere\label{mbv}}
@@ -163,6 +164,37 @@ The Doppler shifht due to the speed $<v>$ would be:
 
 4. \\ 
 
+The velocity that would produce a doppler shift twice as the previous
+is:
+
+\begin{equation}
+v2 = 22406.44
+\end{equation} 
+
+And the number of photons that would be within the $1\%$ 
+of $v2$ are:
+
+\begin{equation}
+N2 = erf(2v/\sqrt{2}a) - \sqrt{\dfrac{2}{\pi}} \dfrac{2v e^{-v^2/a^2}}{a} \Bigg|_{0.99<2v>}^{1.01<2v>}  = 6.48\times 10^{35} 
+\end{equation}
+
+5.\\
+
+And finally for a doppler shift fourth times:
+
+\begin{equation}
+v4 = 44812.88 
+\end{equation}
+
+And the number of photons that would be within the $1\%$
+of $v4$ are:
+
+\begin{equation}
+N4 = erf(4v/\sqrt{2}a) - \sqrt{\dfrac{2}{\pi}} \dfrac{4v e^{-2v^2/a^2}}{a} \Bigg|_{0.99<4v>}^{1.01<4v>}  = 2.56\times 10^{35} 
+\end{equation}
+
+
+
 
 \begin{LARGE}
 \textbf{4.}
@@ -198,8 +230,126 @@ I_{\nu} = T_{\nu} (0)  e^{-\tau_{\nu}} + B_{\nu}(T)(1- e^{-\tau_{\nu}})
 \dfrac{2 \nu^2 K}{c^2} T_{\nu} = \dfrac{2 \nu K}{c^2}T_b(0)e^{-\tau_{\nu}} + \dfrac{2 \nu^2 K}{c^2} T(1 - e^{-\tau_{\nu}})
 \end{equation}
 
-\begin{equation}
-T_{\nu} = T_b (0)  e^{-\tau_{\nu}} + T(1- e^{-\tau_{\nu}}) 
+\begin{equation}\label{T}
+T_{b} = T_b (0)  e^{-\tau_{\nu}} + T(1- e^{-\tau_{\nu}}) 
 \end{equation}
+
+Eq.(15.29) of the text says that:
+
+\begin{equation}\label{1529}
+\rho \kappa_{\nu}^{ff} = \sum_{i} n(Z_i) n_e \left( \dfrac{2m_e}{3\pi K T} \right)
+\left[ \dfrac{4 \pi Z_i^2 e^6}{3 m_e^2 c h \nu^3} \right] \bar{g}_{ff}(\nu) 
+\left( 1 - e^{-h\nu / KT}\right)
+\end{equation}
+
+For  $h \nu << KT$ that we have already shown that it is the case for the radio
+wavelengths we can expand the last term in Eq.\ref{1529} as:
+
+\begin{equation}\label{aprox}
+\left( 1 - e^{-h\nu / KT}\right) \approx 1 - \left(1 - \dfrac{h \nu}{KT} \right)
+= \dfrac{h \nu}{KT}
+\end{equation}  
+
+Now we can express Eq.\ref{1529} as:
+
+\begin{equation}\label{rhok}
+\rho \kappa_{\nu}^{ff} = \sum_{i} n(Z_i) n_e \left( \dfrac{2m_e}{3\pi K T} \right)
+\left[ \dfrac{4 \pi Z_i^2 e^6}{3 m_e^2 c h \nu^3} \right] \bar{g}_{ff}(\nu)\dfrac{h \nu}{KT}
+\end{equation}
+
+And using the definition of the C constant as:
+
+\begin{equation}
+C = \left( \dfrac{2m_e}{3\pi KT} \right)^{1/2} \left[ \dfrac{4\pi e^6}{3m_e^2 cK} \right]
+\end{equation}
+
+Then Eq.\ref{rhok} can be expressed as:
+
+\begin{equation}
+\rho \kappa_{\nu}^{ff} = \sum_{i} n(Z_i) n_e C Z_i^2 T^{-3/2} \nu^{-2} bar{g}_{ff}(\nu)
+\end{equation}
+
+And for a pure Hydrogen plasma $Z_i = 1$ and $\sum_{i}n(Z_1)=n_e$ we found the 
+following expression: 
+
+\begin{equation}
+\rho \kappa_{\nu}^{ff} =  n_e^2 C T^{-3/2} \nu^{-2} bar{g}_{ff}(\nu)
+\end{equation}
+
+The Gaunt factor $bar{g}_{ff}(\nu)$ for in the radio regime is computed using:
+
+\begin{equation}
+bar{g}_{ff}(\nu) = \dfrac{\sqrt{3}}{2\pi} \left[
+ln\left( \dfrac{8K^3T^3}{\pi^2 e^4 m_{e} \nu^2} 
+- 5 \gamma \right) \right]
+\end{equation}
+
+We compute the Gaunt factor using the following values:
+
+\begin{itemize}
+\item $\gamma = 0.5772$
+\item $T=10^4 K$ 
+\item $\nu = 10^{9}Hz$
+\item $K = 1.38e-23 J/K$
+\item $m_e = 9.10e-31 Kg$
+\item $e = 4.8e-10 Fr$
+
+\end{itemize}
+
+With this values we get:
+
+\begin{equation}
+\bar{g}_{ff}(\nu) = 5.96
+\end{equation}
+
+Now using the definition of EM:
+
+\begin{equation}
+EM = \int n_e^2 ds
+\end{equation}
+
+The optical depth can de expressed as:
+
+\begin{equation}
+\tau_{\nu} = \int \rho \kappa_{\nu}^{ff} ds = 
+\int C n_e^2 T^{-3/2}\nu^{-2}bar{g}_{ff}(\nu)
+=  C T^{-3/2}\nu^{-2}bar{g}_{ff}(\nu) \int n_e^2 ds 
+= C T^{-3/2}\nu^{-2}bar{g}_{ff}(\nu) (EM)
+\end{equation}
+
+Now at low frequencies when $\tau_{\nu}>>1$ and without background source $T_b$
+from Eq.\ref{T} can be expressed as: 
+
+\begin{equation}
+T_b = T(1-e^{-\tau_{\nu}}) = T(1 - 0) = T
+\end{equation}
+
+
+While for low frequencies $\tau_{\nu}<<1$ $T_b$ can be expressed as:
+
+\begin{equation}
+T_b = T(1-e^{-\tau_{\nu}}) = T(1 -(1- \tau_{\nu})) = T\tau_{\nu}
+\end{equation}
+
+The flux can be simply approximated by the Intrinsic intensity $I_{\nu}$
+per solid angle that for a distant espherical source can be approzimated 
+as $\pi R_s^2$ where $R_s$ is the radius of the source, and divided per 
+the distance $r$ squared of the source. Then:
+
+\begin{equation}
+F_{\nu} = \pi I_{\nu} \left( \dfrac{R_s^2}{r^2}\right) 
+\end{equation}
+ 
+Wich in temrs of the brightness temperature can be expressed as:
+
+\begin{equation}
+F_{\nu} = \dfrac{2\pi K}{c^2} \left( \dfrac{R_s^2}{r^2}\right)  \nu^2 T_{b}
+\end{equation}
+
+
+If the exciting source would be a O5 star the radius of the HII region
+wouldn't be consistence with the Stromgren's radius that is $R_s = 1 pc$
+for a density of $n_0 = 1155.72 cm^{-3}$, and for a density of $n_0 = 2000 cm^{-3}$ $R_s = 0.69 pc$. 
+ 
 
 \end{document}
