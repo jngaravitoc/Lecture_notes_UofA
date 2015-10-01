@@ -96,25 +96,110 @@ I_{\nu} = I_{\nu}(0)e^{-\tau_{\nu}} + B_{\nu}(T)\left[ 1 - e^{-\tau_{\nu}} \righ
 
 When the source is observed trough the nebula:
 
+\begin{equation}\label{I1}
+I_{\nu, 1 } = I_{\nu}(T_s)e^{-\tau_{\nu}} + I_{\nu}(T_n)\left[ 1 - e^{-\tau_{\nu}} \right]
+\end{equation}
+
+\begin{equation}\label{I2}
+I_{\nu, 2} = I_{\nu}(T_n)\left[ 1 - e^{-\tau_{\nu}} \right]
+\end{equation}
+
+Substracting Eq.\ref{I1} \& Eq.\ref{I2}
+
 \begin{equation}
-I_{\nu} = I_{\nu}(T_s)e^{-\tau_{\nu}} + I_{\nu}(T_n)\left[ 1 - e^{-\tau_{\nu}} \right]
+I_{\nu, 1} - I_{\nu, 2} = I_{\nu}(T_s)e^{-\tau_{\nu}}
+\end{equation}
+
+
+
+\begin{equation}
+-\tau_{\nu} = Ln \left( \dfrac{I_{\nu, 1} - I_{\nu, 2}}{I_{\nu}(T_s)}  \right)
+\end{equation}
+
+\begin{LARGE}
+\textbf{3.}
+\end{LARGE}
+
+\begin{figure}[H]
+\includegraphics[scale=0.5]{mbv.png}
+\caption{Velocity distribution for $10^{38}$Hydrogen atoms 
+in the solar photosphere\label{mbv}}
+\end{figure}
+
+1. \\
+Figure \ref{mbv} show the velocity distribution of thw $10^{38}$ atoms
+in the solar photosphere. The black vertical line shows the typical
+speed of a Hydrogen atom, which was computed as follows:
+
+\begin{equation}
+<v> = 2\int_0^{\infty} \left( \dfrac{m}{2\pi KT}  \right)^{3/2} 4\pi v^3 e^{-mv^2/KT}
 \end{equation}
 
 \begin{equation}
-I_{\nu} = I_{\nu}(T_s)
+<v> = 8\pi \left( \dfrac{m}{2\pi KT}  \right)^{3/2} \left(\dfrac{KT}{m}\right)^4
+= 2 \left( \dfrac{2}{\pi} \right)^{1/2} \left( \dfrac{KT}{m}  \right)^{1/2}
 \end{equation}
 
 \begin{equation}
-I_{\nu}(T_s) = I_{\nu}(T_s)e^{-\tau_{\nu}} + I_{\nu}(T_n)\left[ 1 - e^{-\tau_{\nu}} \right]
+<v> = 11203.22 m/s
+\end{equation}
+
+2. \\ 
+
+The number of photons (N1) within a 1\% of $<v>$ can be computed with the CDF as follows:
+
+
+\begin{equation}
+N1 = erf(v/\sqrt{2}a) - \sqrt{\dfrac{2}{\pi}} \dfrac{v e^{-v^2/2a^2}}{a} \Bigg|_{0.99<v>}^{1.01<v>}  = 9.07\times 10^{35} 
+\end{equation}
+
+3. \\
+
+The Doppler shifht due to the speed $<v>$ would be:
+
+\begin{equation}
+\dfrac{\nu}{\nu_0} = (1 + <v>/c) =  1.000037
+\end{equation}
+
+4. \\ 
+
+
+\begin{LARGE}
+\textbf{4.}
+\end{LARGE}
+
+To show that $h \nu << KT$ for HII regions we select the extreme case that
+corresponds to $\lambda = 1mm$. Using the fact the typical temperature 
+of a HII region is $10^4$K we found that: 
+
+\begin{equation}
+h \nu = 1.98 \times 10 ^{28} J
+\end{equation} 
+
+\begin{equation}
+KT_{HII} = 1.38 \times 10^{-19} J
+\end{equation}
+
+Then for radio observations it is valid to work in the Rayleigh-Jeans limit.
+
+\begin{equation}
+B_{\nu}(T) = \dfrac{2\nu^2}{c^2}KT
 \end{equation}
 
 \begin{equation}
-e^{-\tau_{\nu}}(I_{\nu}(T_s) - I_{\nu}(T_n)) = I_{\nu}(T_s) - I_{\nu}(T_n)
+T_b = \dfrac{c^2}{2\nu^2K}I_{\nu}
 \end{equation}
 
 \begin{equation}
-1 - e^{-\tau_{\nu}} = I_{\nu}(T_s) - I_{\nu}(T_n)
+I_{\nu} = T_{\nu} (0)  e^{-\tau_{\nu}} + B_{\nu}(T)(1- e^{-\tau_{\nu}})
 \end{equation}
 
+\begin{equation}
+\dfrac{2 \nu^2 K}{c^2} T_{\nu} = \dfrac{2 \nu K}{c^2}T_b(0)e^{-\tau_{\nu}} + \dfrac{2 \nu^2 K}{c^2} T(1 - e^{-\tau_{\nu}})
+\end{equation}
+
+\begin{equation}
+T_{\nu} = T_b (0)  e^{-\tau_{\nu}} + T(1- e^{-\tau_{\nu}}) 
+\end{equation}
 
 \end{document}
