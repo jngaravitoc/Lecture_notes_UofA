@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[hmargin=2.0cm,vmargin=1cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{natbib}
+\usepackage{amsmath}
+
+\title{\begin{LARGE}
+{Modelling the Sagittarius stream}
+\end{LARGE}}
+\begin{document}
+
+\section*{The dispersion relation of disks:}
+
+\begin{equation}
+\tilde{\omega} = \omega - m\Omega
+\end{equation}
+
+Epicyclic frequency:
+
+\begin{equation}
+\kappa^2 = 2\Omega \left( 2\Omega + r \dfrac{d\Omega}{dr}  \right)
+\end{equation}
+
+Dispersion relation:
+
+\begin{equation}\label{eq:dispersion}
+(\tilde{\omega}^2 - \kappa^2)(\tilde{\omega}^2 - n\Omega_k^2) =
+\tilde{\omega}^2 c_s^2 k_r^2
+\end{equation}
+
+To understand this dispersion relation it is better to study the limit
+cases:
+
+In the case of oscillations in the plane if the disk
+$n=0$ Eq.\ref{eq:dispersion} reduced to:
+
+\begin{equation}\label{eq:disp1}
+\tilde{\omega}^2 = \kappa^2 + k_r^2 c_s^2
+\end{equation}
+
+This condition is known as \textbf{inertial-acoustic} waves
+and corresponds to the oscillations of a fluid element that was
+displaced in the radial direction, the oscillations arise to the
+resorting forces that brings back the fluid to the initial position.
+The oscillation frequency is the epicyclic frequency $\kappa(r)$ first
+term in the right part of equation \ref{eq:disp1}. While the second
+term corresponds to acoustic oscillations due to the restoring force
+from compressible fluids.
+
+Now in the long-wavelength limit ($k_r=0$) Eq.\ref{eq:disp1} is
+reduced to:
+
+\begin{equation}
+\tilde{\omega}^2 = \kappa^2
+\end{equation}
+
+\begin{equation}
+\tilde{\omega}^2 = n \Omega_K^2
+\end{equation}
+
+Which corresponds to vertical oscillations in the disk, due to a
+perturbation of a fluid element in the vertical direction. The
+vertical component of the gravitational force in the restore force
+that returns the fluid element to the plane of the disk. The frequency
+of this oscillations is $\Omega_K$.
+
+This two oscillations are coupled in the form $(\tilde{\omega}^2 -
+\kappa^2)(\tilde{\omega}^2 - n\Omega_k^2)$ in the dispersion relation
+Eq.\ref{eq:dispersion}. Vertical oscillations induce perturbations
+in the radial direction due to the inhomogeneities in the disk. The
+coupling is stronger when the radia wavelength is shorter and the
+acoustic speed is faster.
+
+The solutions for Eq.\ref{eq:dispersion} are:
+
+\begin{equation}\label{eq:sol}
+\tilde{\omega}^2 = \dfrac{(n\Omega_k^2 + \kappa^2 + c_s^2 K_r^2) \pm
+\sqrt( - 4\kappa^2n\Omega_k^2)}{2}
+\end{equation}
+
+The modes with the $+$ sign in Eq.\ref{eq:sol} are called
+\textbf{p-modes} while the solutions with $-$ are called
+\textbf{g-modes}
+
+\end{document}
