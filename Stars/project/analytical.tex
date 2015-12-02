@@ -1,0 +1,26 @@
+\section*{Hydrodynamics equations}
+The basic equations are those derived from Boltzmann equations:
+
+The continuity equation is:
+
+\begin{equation}
+\dfrac{\partial \rho}{\partial t} + \nabla \cdot (\rho u_i) = 0
+\end{equation}
+
+Which could be expressed in cylindrical coordinates as:
+
+\begin{equation}
+\dfrac{\partial \rho}{\partial t} + \dfrac{\partial}{r \partial r}(r
+\rho v_r) + \dfrac{\partial}{r \partial \phi}(\rho v_{\phi}) +
+\dfrac{\partial}{\partial z}(\rho v_z) = 0
+\end{equation}
+
+Where $v_r, v_\phi$ and $v_z$ are the components of the velocity in
+cylindrical coordinates.
+
+The momentum equation is:
+
+\begin{equation}
+\dfrac{\partial u_j}{\partial t} + u_j \dfrac{\partial u_i}{\partial
+x_i} = -a_j - \dfrac{1}{\rho} \dfrac{\partial \psi_{ij}}{\partial x_i}
+\end{equation}
