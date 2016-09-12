@@ -1,0 +1,166 @@
+\documentclass[14pt]{article}
+\usepackage{amsmath}
+\usepackage{listings} % For writing code see http://ctan.org/pkg/listings
+\usepackage{graphicx}
+\usepackage{float}
+
+\title{HW \#1 ASTR 540}
+\author{Nico Garavito}
+\begin{document}
+
+\maketitle
+
+1. The declination of a star is $42^{\circ}57'$ N and its proper
+motion components are $\mu_{\alpha}=-0.0374''$, $\mu_{\delta}=1.21"$.
+Calculate its total proper motion. If the spectrum reveals a blueshift
+of $7.6 kms^{-1}$ and the parallax is $0.376"$, calculate its space
+velocity relative tp the Sun and its total proper motion at the time
+of closest approach. \\
+
+\textbf{Solution:}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c}
+\hline
+$\delta = 42^{\circ} 57' = 42.95^{\circ}$ \\
+$\mu_{\alpha} = -0.0374''$ \\
+$\mu_{\delta} = 1.21''$\\
+\hline
+\end{tabular}
+\caption{\label{tab:1}}
+\end{table}
+
+From the proper motion components resumed in table \ref{tab:1}
+we can compute the total proper motion as follows:
+
+\begin{equation}
+\mu_{\delta} = \mu cos(\theta)
+\end{equation}
+
+\begin{equation}
+\mu = \dfrac{\mu_{\delta}}{cos(\theta)}
+\end{equation}
+
+\begin{equation}
+\mu_{\alpha} = \dfrac{\mu sin(\theta)}{cos(\delta)}
+\end{equation}
+
+\begin{equation}
+tan(\theta)=\dfrac{cos(\delta) \mu_{\alpha}}{\mu_{\delta}}
+\end{equation}
+
+\begin{equation}
+\theta = 1.3035^{\circ}
+\end{equation}
+
+And the total proper motion would be:
+
+\begin{equation}
+\mu = 1.21 ''/yr
+\end{equation}
+
+With the parallax we can compute the distance as follows:
+
+\begin{equation}
+d = \dfrac{1AU}{tan(0.376'')} = 180 AU /(0.376'' * \pi) = 548576.612 AU
+\end{equation}
+
+The space velocity relative to the Sun would be:
+
+\begin{equation}
+V_t = \mu \cdot d = \dfrac{1.21}{3600} \dfrac{\pi}{180} 548576.12 AU
+/yr = 15.255 km/s
+\end{equation}
+
+\begin{equation}
+V = (V_t^2 + V_r^2)^{(1/2)} = (-0.46^2 + 7.6^2)^{1/2} = 17.03 km/s
+\end{equation}
+
+Finally the total proper motion at the time of closest approach would
+be:
+
+\begin{equation}
+\mu = \dfrac{V_t}{d}
+\end{equation}
+
+Where the distance of closest approach $d_0$ would be:
+
+\begin{equation}
+d_0 = d \cdot sin(\theta) = d \cdot sin(arctan(V_t/V_r)) =  491015.38
+ AU
+\end{equation}
+
+And the total proper motion at this time $t_0$ is going to be:
+
+\begin{equation}
+\mu = 17.03 km/s / 491015.38 AU = 1.5''/yr
+\end{equation}
+
+2. Smoot et al (1992) found a dipole anisotropy in COBE measurements
+of the microwave background such that the background is higher by
+$3.36mK$ (c.f. 2.73K average) in the direction $\alpha=11h09m$
+,$\delta=-7^{\circ}$. By subtracting Galatic rotational motion of
+the solar neighborhood ($v=220km/s$), determine the direction (in
+celestial coordinates) and peculiar speed of the Milky Way with
+respect to the microwave background. The IAU approved celestial
+coodiantes of the North Galactic Pole is $192^{\circ}.85948,
+27^{\circ}.12825$ and the Galactic longitude of th north celestial pole
+is $123.932$.\\
+
+\textbf{Solution:}
+
+Using the difference in temperature of the microwave background and
+the dipole anisotropy the relative velocity of the Solar neighbor with 
+respect to the CMB can be calculated as:
+
+\begin{equation}
+\dfrac{T'}{T} = \left( \dfrac{c-v}{c+v}\right)^{1/2}
+\end{equation}
+
+Where $T=2.73K$ and $T'=T+3.36mK$. After some algebra I found:
+
+\begin{equation}
+v = \dfrac{c\left (1 - \left (\dfrac{T'}{T}\right )^2 \right )}
+{1 + \left (\dfrac{T'}{T}\right )^2} = -369.23 km/s
+\end{equation}
+
+The direction of the CMB anisotropy in Galactic coordinates can be
+computed using the coordinates transformation relation:
+
+\begin{equation}
+l=263.22
+b = 47.81
+\end{equation}
+
+Finally the component of the solar neighbor rotational velocity
+$v_{\odot}$ in the
+direction of the CMB dipole anisotropy $v_{\odot, CMB}$ is:
+
+\begin{equation}
+v_{\odot, CMB} = v_{\odot} cos(\theta)cos(\phi) = -146.71 km/s
+\end{equation}
+
+Finally the peculiar velocity of the Milky Way with respect to the
+CMB is $v_{MW, CMB} = -146.71+(-369.23) = -515.94 km/s$
+
+3. Bahcall \& Soneira's (1980) assumed that the luminosity density of
+the Galactic disk as a function of radius canbe fit by an exponential
+function. Using near-infrared (K-band) spacelab 2 data, they
+determined a central disk luminosity of $1208  L_{odot} pc^{-2}$ and a
+disk scale length $R_d=2.7 kpc$. If the distance from the Sun to the
+Galactic center is $R_0=8kpc$, estimate the projected surface
+brightness $\mu_K$ (in mags arcsec$^{-2}$) of the Galactic disk in
+the solar neighborhood as viewd by an external observer. The absolute
+magnitude of the Sun is $M_K=+3.28$.
+
+\textbf{Solution:}
+
+\begin{equation}
+M_{bol, gal} = M_B - 2.5Log_{10}(L_{gal}/L_{\odot}) = 5.48 -
+2.5Log_{10}(1.4\times 10^{10}) = -19.58
+\end{equation}
+
+4.
+
+\end{document}
