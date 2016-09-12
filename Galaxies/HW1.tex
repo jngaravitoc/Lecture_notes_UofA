@@ -3,11 +3,11 @@
 \usepackage{listings} % For writing code see http://ctan.org/pkg/listings
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[margin=0.5in]{geometry}
 
 \title{HW \#1 ASTR 540}
 \author{Nico Garavito}
 \begin{document}
-
 \maketitle
 
 1. The declination of a star is $42^{\circ}57'$ N and its proper
@@ -63,7 +63,7 @@ And the total proper motion would be:
 With the parallax we can compute the distance as follows:
 
 \begin{equation}
-d = \dfrac{1AU}{tan(0.376'')} = 180 AU /(0.376'' * \pi) = 548576.612 AU
+d = \dfrac{1AU}{tan(0.376'')} = 180 AU /(0.376'' \pi) = 548576.612 AU
 \end{equation}
 
 The space velocity relative to the Sun would be:
@@ -94,7 +94,7 @@ d_0 = d \cdot sin(\theta) = d \cdot sin(arctan(V_t/V_r)) =  491015.38
 And the total proper motion at this time $t_0$ is going to be:
 
 \begin{equation}
-\mu = 17.03 km/s / 491015.38 AU = 1.5''/yr
+\mu = 17.03 kms^{-1} / 491015.38 AU = 1.5''/yr
 \end{equation}
 
 2. Smoot et al (1992) found a dipole anisotropy in COBE measurements
@@ -126,12 +126,8 @@ v = \dfrac{c\left (1 - \left (\dfrac{T'}{T}\right )^2 \right )}
 \end{equation}
 
 The direction of the CMB anisotropy in Galactic coordinates can be
-computed using the coordinates transformation relation:
-
-\begin{equation}
-l=263.22
-b = 47.81
-\end{equation}
+computed using the coordinates transformation relation, I get
+$l=263.22^{\circ}$ and $b=47.81^{\circ}$ (using \textsc{Astropy}).
 
 Finally the component of the solar neighbor rotational velocity
 $v_{\odot}$ in the
@@ -142,25 +138,164 @@ v_{\odot, CMB} = v_{\odot} cos(\theta)cos(\phi) = -146.71 km/s
 \end{equation}
 
 Finally the peculiar velocity of the Milky Way with respect to the
-CMB is $v_{MW, CMB} = -146.71+(-369.23) = -515.94 km/s$
+CMB is:
+
+\begin{equation}
+v_{MW, CMB} = -146.71+(-369.23) = -515.94 km/s
+\end{equation}
 
 3. Bahcall \& Soneira's (1980) assumed that the luminosity density of
-the Galactic disk as a function of radius canbe fit by an exponential
+the Galactic disk as a function of radius can be fit by an exponential
 function. Using near-infrared (K-band) spacelab 2 data, they
 determined a central disk luminosity of $1208  L_{odot} pc^{-2}$ and a
 disk scale length $R_d=2.7 kpc$. If the distance from the Sun to the
 Galactic center is $R_0=8kpc$, estimate the projected surface
 brightness $\mu_K$ (in mags arcsec$^{-2}$) of the Galactic disk in
-the solar neighborhood as viewd by an external observer. The absolute
-magnitude of the Sun is $M_K=+3.28$.
+the solar neighborhood as viewed by an external observer. The absolute
+magnitude of the Sun is $M_K=+3.28$.\\
 
 \textbf{Solution:}
+
+The absolute magnitude of the Galaxy would be:
 
 \begin{equation}
 M_{bol, gal} = M_B - 2.5Log_{10}(L_{gal}/L_{\odot}) = 5.48 -
 2.5Log_{10}(1.4\times 10^{10}) = -19.58
 \end{equation}
 
-4.
+The luminosity density at the Solar neighborhood would be:
+
+\begin{equation}
+1208 L_{\odot} pc^{-2} exp(-8.0/3.0) = 83.93 L_{\odot} pc^{-2}
+\end{equation}
+
+And the projected surface brightness for an external observer 
+at an angle $\theta$ would be: 
+
+\begin{equation}
+\mu_{k} = -2.5log_{10}(I^2d^2cos(\theta)) + M_{k{\odot}} + 5 log_{10}(d) -
+5 = -2.5log_{10}(I^2) - 2.5log_{10}cos(\theta) + M_{k{\odot}}
+\end{equation}
+
+With the numbers given by the problem the surface brightness would be
+in terms of $\theta$:
+
+\begin{equation}
+\mu_{k} = -1.59 -2.5log_{10}(cos(\theta))
+\end{equation}
+
+4. Assume for the time being that the Galaxy has no dist, and that we
+are observing along a line of sight at $b=0^{\circ}$ and
+$l=180^{\circ}$. We are interested in observing the most distant
+solar-type stars ($M_v \sim 5.1$) possible, but our apparent magnitude
+limit for the observations is $m_v =24.0$. The central stellar density
+of the halo is expted to be $\sim 1\%$ that of the disk component, but
+the number density of halo stars falls off as $R^{-3.5}$ whereas the
+stellar density in the disk decreases as $n \sim exp(-R/R_0)$, where
+$R_0\sim 3kpc$ (also known as the disk scale length). \\
+
+a.) What is the maximum distance (in kpc) out to which we can observe
+the stars in question?\\
+
+\textbf{Solution:}
+
+The maximum distance assuming no dust would be:
+
+\begin{equation}
+d = 10^{18.9/5+1} = 60.25 kpc
+\end{equation}
+
+b.) At that distance, what is the probability that the star is a
+member of the stellar halo rather that the stellar disk? What is the
+probability in the solar neighborhood of observing a halo star from
+among all G5 spectral type stars?
+
+\textbf{Solution}:
+
+The probability of observing a halo star would be:
+
+\begin{equation}
+P = 1 - 1/(60.25^{-3.5}/exp(-60.25/3)) = 99.6 \%
+\end{equation}
+
+While in the solar neighborhood the probability would be $0.4 \%$.\\
+
+c.) Now put some dust in the disk so that the interstellar reddening
+aling the line of sight in thedisk is $E(B-V)=0.5(d/kpc)$, where $d$
+is the distance along the line of sight to the star. Assuming a Milk
+Way like extinction curve in the disk, how does the answer to part
+(a) change if we have the same limiting $m_v=24$ for the
+observation?\\
+
+\textbf{Solution:}
+
+The distance modulus equation have to be corrected by the extinction,
+this is:
+
+\begin{equation}
+d = 10^{(m_v-M_v-A_v)/5 + 1}
+\end{equation}
+
+Where $A_v=1.6d$ for a Milky Way like extinction curve, finally the
+distance would be $d=3.75kpc$.\\
+
+5.) Salpeter's Initial Mass Function (IMF) is of the form:
+
+\begin{equation}
+\Phi(M) \sim M^{-(1+x)}
+\end{equation}
+
+By considering only stars more massive than 1 solar mass (whose life
+times are shorter than the age of the Galaxy) and stellar luminosities
+$L\sim M^4$, find the slope $x$ such that equal numbers of stars are
+seen in a homogeneous isotropic region within equal logarithmic ranges
+of luminosity. What type of star dominates the counts if the slope $x$
+is flatter than this value? \\
+
+\textbf{Solution:}
+
+First we can compute the Luminosity function from the IMF as follows:
+
+\begin{equation}
+\Phi(L) = \Phi(M)\dfrac{dM}{dL} = \dfrac{L^{-(1+x/4)}}{4}
+\end{equation}
+
+Where we use the realtion between Mass and Luminosity to get $dM/dL =
+\dfrac{L^{-3/4}}{4}$.
+
+The number of stars seen in an equal logarithmic range of luminosity
+is:\\
+
+\begin{equation}
+N = \int_{L_0}^{L_1} N= \int_{L_0}^{L_1} \dfrac{L^{-(1+x/4)}}{4} dL
+\end{equation}
+
+For different ranges of luminosity $N$ is going to be constant only in
+the case of $x=0$, if $x \neq 0$ $N$ is going to depend on the
+luminosity range. In the case of $x=0$ the number of stars goes as
+$N\sim log(M)$ the massive stars dominates, which is not what it has
+been observed.\\
+
+6.) The star formation history of a stellar population is often
+represented by an exponential decay from the initial burst, viz:
+$\Psi(t)\sim exp(-t/\tau)$ where $\tau$ is some time constant. If the
+IMF $\Phi(M)$ is invariant, obtai an expression for the observed number
+of stars of a given mass at time $t$ in terms of tis main sequence
+lifetime. Comment briefly in the differences you would expect to see
+in the H-R diagrams of a population where $\tau=0.1 Gyr$ and
+$\tau=\infty$ for a population viewed after $12Gyr$.\\
+
+\textbf{Solution:}
+
+The number of stars given that the IMF is invariant in going to be:
+
+\begin{equation}
+N \sim \int_{t=0}^{t'} \Psi dt = \int_{t=0}^{t'} exp(-t/\tau) = -\tau
+exp(-t'/\tau) + \tau
+\end{equation}
+
+At $\tau=0.1$ most of the stars most be old and they should be located close to
+the turn over, the red giant branch etc. While in the case of the $\tau=\infty$ most of the
+stars most be young and they should be in the main sequence.
 
 \end{document}
