@@ -1,0 +1,56 @@
+\documentclass[14pt]{article}
+\usepackage{amsmath}
+\usepackage{listings} % For writing code see http://ctan.org/pkg/listings
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{mdframed}
+
+\title{CS665 HW1: Solutions}
+\author{Nicolas Garavito-Camargo}
+\begin{document}
+\maketitle
+
+\begin{mdframed}
+
+1. Given a stream of symbols $a_1,a_2,…,a_n$ each an integer in
+$1,…,m,$ give an algorithm that will select one symbol uniformly
+ at random from the stream. How much memory does your algorithm require?
+
+\end{mdframed}
+
+\textbf{Solution:}\\
+
+A random probability to select a given symbol of the stream
+would be $P = \dfrac{1}{n}$ where $n$ in the number of symbols in the
+stream. If we are reading one symbol at a time, the probability of
+reading the symbol $j$ would
+be $P = \dfrac{1}{\sum j}$ where $j$ is the index of the symbol. Therefore 
+the probability of selecting the symbol $j+1$ is $P_{j+1} =
+\dfrac{1}{\sum (j+1)}$.\\
+
+
+\begin{mdframed}
+2. Give an algorithm to select an $a_i$ from a stream of symbols
+$a_1,a_2,…,a_n$ with probability proportional to $a^2_i$.\\
+\end{mdframed}
+
+\textbf{Solution:}\\
+
+
+In this case the probability of selecting the symbol $a_j$ of the stream 
+would be $P = \dfrac{1}{S_{j}}$ where $S_j = \sum a_j^2$.
+
+\begin{mdframed}
+3. How would one pick a random word from a very large book where the
+probability of picking a word is proportional to the number of
+occurrences of the word in the book? \\
+\end{mdframed}
+
+\textbf{Solution:}\\
+
+Keep track of the appearances of each element and the probability is
+going to be $P = \dfrac{1}{\sum  }$
+
+\end{document}
+
