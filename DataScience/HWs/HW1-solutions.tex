@@ -49,8 +49,43 @@ occurrences of the word in the book? \\
 
 \textbf{Solution:}\\
 
+To tackle this problem I am going to assume that the stream is very
+large with length $n$ such that a simple counting algorithm can't
+work. Therefore I propose the following algorithm:
+
+\begin{itemize}
+\item Initialize a counter for each new word that appears in your stream.
+
+\item As you read the words make a hash table that stores the number of
+words that you have accepted
+\item Assign a probability to each word to be picked based on the number of
+appearances in the hash table. The probability is going to be $P_w =
+n_w/m$, where $M$ is the total words read (this comes from the hash
+table). $n_w$ is the number of apperences of the word, (this also
+comes from the hash table)
+\item Because the distribution of the number of appereances of the
+words should be a Gaussian distribution the probability $P_w$ is going to
+converge as we read words. As such one can stop counting words as soon
+as the change of $P_w$ is small as you read words, say $\Delta_P_w=1\%$.
+
+
+\end{itemize}
+
 Keep track of the appearances of each element and the probability is
 going to be $P = \dfrac{1}{\sum  }$
+
+\begin{framed}
+4. Consider a matrix where each element has a probability of being
+selected. Can you select a row according to the sum of probabilities
+of elements in that row by just selecting an element according to its
+probability and selecting the row that the element is in?
+\end{framed}
+
+\textbf{Solution:}\\
+
+
+
+
 
 \end{document}
 
