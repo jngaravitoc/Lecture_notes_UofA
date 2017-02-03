@@ -5,18 +5,72 @@
 \usepackage{float}
 \usepackage[margin=1.0in]{geometry}
 \usepackage{mdframed}
+\usepackage{hyperref}
 
 \title{CS665 HW1: Solutions}
 \author{Nicolas Garavito-Camargo}
 \begin{document}
 \maketitle
 
-\begin{mdframed}
+\section{Part I}
 
+\begin{enumerate}
+\item  Why are you taking this course?\\
+
+I am an Astronomy PhD student and I have realized that more often data
+science techniques. This is because we have more and more data from
+telescopes or from computer simulations and the most efficient way to 
+processes and understand this data is with data science. Unfortunately
+we don't have a formal class in our department and I would like to
+have a better understanding of data science, that's the reason I am
+taking this class.
+
+\item  What do you think you’ll learn in this course?\\
+
+I hope to learn the algorithms behind the most common techniques,
+to know more literature about this algorithms. 
+
+\item  What programming languages are you comfortable with?\\
+
+C/C++ and Python
+
+\item  Which programming language are you most comfortable with? \\
+
+Python
+
+\item During the course of your studies, what’s the largest dataset
+you’ve had to deal with? What tools did you use?\\
+
+$\sim ~ 100 GB$, which I could split in chunks of $2 Gb$, then I just
+read the data with Python.
+
+
+\item  Tell me about something cool you learned recently. Possible
+answers: books, movies, TV shows, blogs, podcasts, etc. It does not
+have to be about data science. (This is, squarely, “old man tries to
+stay relevant”. Take this either as “Humor me” or “Tell me what I
+should be thinking about with respect to the class”)\\
+
+A follow a nice blog that make summaries about books (often related
+with astronomy \& arts):
+
+\href{https://www.brainpickings.org}{brainpickings}
+
+There I found this two books which I found amazing:
+\href{https://www.brainpickings.org/2015/03/19/dear-data-giorgia-lupi-stefanie-posavec/}{Dear
+Data} and \href{https://www.brainpickings.org/2014/12/02/lynda-barry-syllabus-book/}{Illustrated
+field guide to keeping a visual Diary and Cultivating a capacity for creative observation}
+
+\end{enumerate}
+
+\newpage{}
+
+\section{Part II}
+
+\begin{mdframed}
 1. Given a stream of symbols $a_1,a_2,…,a_n$ each an integer in
 $1,…,m,$ give an algorithm that will select one symbol uniformly
  at random from the stream. How much memory does your algorithm require?
-
 \end{mdframed}
 
 \textbf{Solution:}\\
@@ -37,9 +91,17 @@ $a_1,a_2,…,a_n$ with probability proportional to $a^2_i$.\\
 
 \textbf{Solution:}\\
 
+I would start by storing the index of the elements $i$, then the
+probability of selecting an element is $P = \dfrac{1}{S_{j}}$ where
+$S_j = \sum a_j^2$.
 
-In this case the probability of selecting the symbol $a_j$ of the stream 
-would be $P = \dfrac{1}{S_{j}}$ where $S_j = \sum a_j^2$.
+For the first element that I read I have $i=1$ and $S_1 =
+a_1^2/a_1^2=1$ therefore I pick the first value.
+To pick the next element I would compute the probability of picking that
+element: $S_2 = a_2^2/(a_1^2 + a_2^2)$. Generalizing to $n$ elements
+the probability of picking a given element would be: $S_n = a_n^2 /
+\sum_n a_{n}^2$.
+
 
 \begin{mdframed}
 3. How would one pick a random word from a very large book where the
@@ -54,37 +116,75 @@ large with length $n$ such that a simple counting algorithm can't
 work. Therefore I propose the following algorithm:
 
 \begin{itemize}
-\item Initialize a counter for each new word that appears in your stream.
 
 \item As you read the words make a hash table that stores the number of
-words that you have accepted
+words that you have read.
+
 \item Assign a probability to each word to be picked based on the number of
 appearances in the hash table. The probability is going to be $P_w =
-n_w/m$, where $M$ is the total words read (this comes from the hash
-table). $n_w$ is the number of apperences of the word, (this also
+n_w/M$, where $M$ is the total words that you have read (this comes from the hash
+table). $n_w$ is the number of appearances of the word, (this also
 comes from the hash table)
-\item Because the distribution of the number of appereances of the
+
+\item Because the distribution of the number of appearances of the
 words should be a Gaussian distribution the probability $P_w$ is going to
 converge as we read words. As such one can stop counting words as soon
-as the change of $P_w$ is small as you read words, say $\Delta_P_w=1\%$.
-
-
+as the change of $P_w$ is small as you read words, say $\Delta P_w=1\%$.
 \end{itemize}
 
-Keep track of the appearances of each element and the probability is
-going to be $P = \dfrac{1}{\sum  }$
 
-\begin{framed}
+
+\begin{mdframed}
 4. Consider a matrix where each element has a probability of being
 selected. Can you select a row according to the sum of probabilities
 of elements in that row by just selecting an element according to its
 probability and selecting the row that the element is in?
-\end{framed}
+\end{mdframed}
 
 \textbf{Solution:}\\
 
+I don't think you can do this, the reason is that if your row
+probability is $P_r = \sum a_n$ being $n$ the number of elements in
+that row and $a$ it's values, if there are two rows one $r_1$ with all elements
+with the same probability $a_1$ and the other one $r_2$ with one element
+with probability $a_1$ and the other elements with probability
+$a_2<a_1$, therefore $P_{r1} > P_{r2}$ but with the proposed method
+both will have the same probability of being chosen because both rows have at least
+one element with the same high probability.
+
+If you the number of appearances of one element in the raw where taken
+into account, then it would be possible to apply this method.
 
 
+\begin{mdframed}
+5. For the streaming model give an algorithm to draw $t$ of indices $i$
+independent samples each with the probability proportional to the
+value of $a_i$. Justify that your algorithm works correctly.
+\end{mdframed}
+
+
+\textbf{Solution:}\\
+
+The algorithm would be as follows:
+
+
+First I would start with a probability to pick the first $t$ indices
+this is $P_t = \sum{a_t}/S_{t,1} = 1$, where I define $S_{t,k}$ as the
+sum of all the indices $t$ that I have read.
+
+\begin{equation}
+S_{t,k} = \sum_k \sum_t a_t
+\end{equation}
+
+You store this indices and then you select randomly a set of indices
+$t' \neq t$, the probability of get the second set of $t'$ is going to be
+ $P_{t'} = \sum{a_{t}'}{S_{t,2}}$ and such, the probability of not
+picking this indices $t'$ is $1-P_{t'}$. Generalizing this to $n$ procedures
+the probability of getting the $n th$ set of $t$ indices is:
+
+\begin{equation}
+P_t = \dfrac{\sum_{a_t}}{S_{t,k}}
+\end{equation}
 
 
 \end{document}
