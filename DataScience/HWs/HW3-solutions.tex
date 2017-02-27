@@ -26,12 +26,63 @@ distances  invariant.   Fix  the origin  of  the  coordinate  system  so  that  
 set  of  points  is  at  the  origin. That is, $\sum_i=1^n x_i = 0$
 \begin{enumarate}
 \item Show that the elements of $XX^T$ are given by:
-\begin{equation}
 
+\begin{equation}
+x_i x_j^T = - \dfrac{1}{2} \left[ d_{ij}^2 - \dfrac{1}{n} \sum_{j=1}^n
+d_{ij}^2 - \dfrac{1}{n}\sum_{i=1}^n d_{ij}^2 + \dfrac{1}{n^2}
+\sum_{i=1}^2 \sum_{j=1}^n d_{ij}^2 \right]
 \end{equation}
+
+\item Describe an algorithm for determining the matrix $X$ whose rows
+are the $x_i$.
+
 \end{enumarete}
 
 \end{mdframed}
+
+\textbf{Solution:}\\
+
+\textbf{1.} The distance matrix $D$ with components $d_{ij}^2$ is defined as:
+
+\begin{equation}
+d_{ij}^{2} = (\sum_{i} x_{i})^2 + (\sum_{j} x_{j})^2 - 2 \sum_{i,j} x_i
+x_j
+\end{equation}
+
+Which at the origin of the coordinate system it would be:
+
+\begin{equation}\label{eq:dij}
+d_{ij}^{2} =  - 2 \sum_{i,j} x_i x_j
+\end{equation}
+
+On the other hand the matrix $xx^T$ is:
+
+\begin{equation}
+x x^T_{ij} = (x_i - \dfrac{1}{n}\sum_i x_i )(x_j - \dfrac{1}{n}\sum_j
+x_j )
+\end{equation}
+
+Doing the products the components of the matrix are:
+
+\begin{equation}\label{eq:xxt}
+xx^T_{ij} =  \sum_{ij}^n x_i x_j - \dfrac{1}{n} \sum_i x_i x_j -
+\dfrac{1}{n}\sum_j x_i x_j + \dfrac{1}{n^2} \sum_{ij} x_i x_j 
+\end{equation}
+
+Using the results of Eq. \ref{eq:dij} into Eq. \ref{eq:xxt} $xx^T$ is:
+
+\begin{equation}
+xx^T_{ij} =  -\dfrac{1}{2} \left[  d_{ij}^2 - \dfrac{1}{n}
+\sum_i d_{ij}^2 -
+\dfrac{1}{n}\sum_j d_{ij}^2 + \dfrac{1}{n^2} \sum_{ij} d_{ij}^2 \right]
+\end{equation}
+
+Which is the desired result.\\
+
+\textbf{2.} 
+
+In order to determine $X$ from $D$ we need to center the matrix $D$
+an
 
 \section{Part II}
 
