@@ -1,0 +1,106 @@
+\documentclass[14pt]{article}
+\usepackage{amsmath}
+\usepackage{listings} % For writing code see http://ctan.org/pkg/listings
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{mdframed}
+\usepackage{hyperref}
+
+\title{CS665 HW6: Solutions}
+\author{Nicolas Garavito-Camargo}
+\begin{document}
+\maketitle
+
+\section*{Part I}
+
+\begin{mdframed}
+\textbf{1.} Build a classifier to predict whether a customer will be
+``good”
+(presumably, this means they will pay the loan) or ``bad”. This is the
+last column of the dataset above.\\
+
+You should try more than one classifier (or, equivalently, more than
+one choice of hyperparameter settings like the parameters in k-NN, or
+choice of kernels in SVMs) to investigate the differences in
+performance of different classifiers.
+
+\begin{enumerate}
+\item What is the observed performance of your model?
+
+\item When you breakdown the performance of your model in different
+subclasses (for training and validation), do you see anything that can
+be concerning? Specifically:
+
+\item  show figures of the performance of your model on training and
+validation when you split the dataset on age (attribute 13), using
+decade-wide bins.
+
+\item  show figures of the performance of your model on training and
+validation when you split the dataset on gender (attribute 9, though
+note that the information is encoded across different values of the
+attribute)
+
+
+\end{enumerate}
+
+\end{mdframed}
+
+\textbf{Solution:}\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{All_eff.pdf}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{Kmeans_age.pdf}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{SVC_age.pdf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{Kmeans_genre.pdf}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{SVC_genre.pdf}
+\end{figure}
+
+\section*{Part II}
+
+\begin{mdframed}
+\textbf{2} In this part of the assignment, you will explore the extent to which
+dropping individual features from a dataset is enough to “protect” the
+attribute.
+
+\begin{enumerate}
+\item   Remove the age attribute from your dataset, and rerun the
+predictions. Does the accuracy change, and how? After running the
+predictions without using age, try to measure the DI of the decisions
+you made, using an age split of 25.
+
+\item    Again, remove the age attribute from your dataset, but now attempt
+to predict the attribute “age <= 25”. What is the accuracy of your
+model?
+
+\item  Do the same thing as 2.1, but removing attribute 9, which encodes
+gender.
+
+\item  Do the same thing as 2.2 (that is, attempt to predict gender from
+the dataset without attribute 9).
+
+\end{enumerate}
+\end{mdframed}
+
+
+\end{document}
